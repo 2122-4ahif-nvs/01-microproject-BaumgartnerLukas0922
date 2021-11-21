@@ -1,0 +1,28 @@
+@startuml
+class Customer{
+    -string firstName
+    -string lastName
+    -LocalDate dateOfBirth
+}
+
+class Tea{
+    -string name
+    -double pricePerUnit
+    -boolean containsCaffeine
+}
+
+class Order{
+    -Tea: tea
+    -Customer: customer
+    -int: amount
+}
+
+class Supplier{
+    -string companyName
+    -Tea suppliedTeas
+}
+
+Supplier "1"<--"*" Tea : "supplies"
+Tea "*"--"*" Customer : "buys"
+(Tea, Customer) .. Order
+@enduml
